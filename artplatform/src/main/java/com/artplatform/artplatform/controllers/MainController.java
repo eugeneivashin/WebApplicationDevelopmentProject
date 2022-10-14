@@ -13,4 +13,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login( Model model) {
+        model.addAttribute("title", "Art Platform");
+        return "login_page";
+    }
+
+    @GetMapping("/registration")
+    public String registration( Model model) {
+        model.addAttribute("title", "Art Platform");
+        return "registration_page";
+    }
+
 }
