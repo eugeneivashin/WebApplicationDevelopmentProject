@@ -15,8 +15,10 @@
 	<!-- JQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
 	<!-- BootStrap CSS -->
-	<link rel="stylesheet" href="src/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="src/style.css">
 
 </head>
@@ -84,6 +86,11 @@
 							<div class="form-outline mb-4">
 								<input type="email" id="registerEmail" class="form-control" />
 								<label class="form-label" for="registerEmail">Email</label>
+							</div>
+
+							<div class="form-outline mb-4">
+								<input type="date" id="registerDOB" class="form-control" />
+								<label class="form-label" for="registerDOB">Date of Birth</label>
 							</div>
 
 							<!-- Password input -->

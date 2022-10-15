@@ -16,7 +16,7 @@ public class MainController {
     @GetMapping("/login")
     public String login( Model model) {
         model.addAttribute("title", "Art Platform");
-        return "login_page";
+        return "auth";
     }
 
     @GetMapping("/registration")
