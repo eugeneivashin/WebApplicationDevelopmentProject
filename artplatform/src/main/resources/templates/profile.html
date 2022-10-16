@@ -46,7 +46,7 @@
 						</button>
 					</div>
 				</div>
-				<div class="col-3">	
+				<div class="col-3">
 					<div class="d-flex flex-row gap-2 d-md-flex">
 						<button class="btn btn-primary me-md-2 text-nowrap d-none" type="button">Sign In</button>
 						<button class="btn btn-primary text-nowrap d-none" type="button">Sign Up</button>
@@ -73,38 +73,63 @@
 					<div class="row py-2">
 						<div class="col"></div>
 						<div class="col-10 border border-2 border-dark rounded-1 m-0 p-0 shadow p-0 mb-3 bg-body rounded">
+							<form method="POST" action="">
 							<div class="row p-4">
-								<div class="col-3 border border-1 border-opacity-25 border-dark p-0 rounded rounded-2 shadow-sm">
-									<img src="src/user_profile.png" class="img-fluid">
-								</div>
-								<div class="col-auto align-self-center ">
-									<div class="d-flex flex-column">
-										<div class="d-flex flex-row border-bottom ">
-											<p class="me-5 mb-1 text-nowrap"> Username</p>
-											<p class="ms-5 mb-1 w-100 text-end"> El negro</p>
-										</div>
-										<div class="d-flex flex-row border-bottom">
-											<p class="me-5 mb-1 text-nowrap"> E-mail</p>
-											<p class="ms-5 mb-1 w-100 text-end"> avocado@gmail.com</p>
-										</div>
-										<div class="d-flex flex-row border-bottom">
-											<p class="me-5 mb-1 text-nowrap"> Date of birth</p>
-											<p class="ms-5 mb-1 w-100 text-end"> 15/02/1989</p>
-										</div>
-										<div class="d-flex flex-row border-bottom ">
-											<p class="me-5 mb-1 text-nowrap"> Rating</p>
-											<p class="ms-5 mb-1 w-100 text-end"> 5</p>
-										</div>
-										<div class="d-flex flex-row border-bottom ">
-											<p class="me-5 mb-1 text-nowrap"> Posts</p>
-											<p class="ms-5 mb-1 w-100 text-end"> 1</p>
+									<div class="col-3 border border-1 border-opacity-25 border-dark p-0 rounded rounded-2 shadow-sm">
+										<img src="src/user_profile.png" class="img-fluid">
+									</div>
+									<div class="col-auto align-self-center ">
+										<div class="d-flex flex-column">
+											<div class="d-flex flex-row border-bottom ">
+												<label for="username" class="me-5 mb-2 text-nowrap"> Username</label>
+												<p id="username" class="ms-5 mb-1 w-100 text-end"> El negro</p>
+												<input name="username" style="display: none;"
+													class="justify-content-end m-auto align-self-end" type="text"
+													id="usernameEdit" value="El negro">
+											</div>
+											<div class="d-flex flex-row border-bottom ">
+												<label for="name" class="me-5 mb-2 text-nowrap"> Name</label>
+												<p id="name" class="ms-5 mb-1 w-100 text-end"> Shamshirband</p>
+												<input name="name" style="display: none;"
+													class="justify-content-end m-auto me-0 align-self-end" type="text"
+													id="nameEdit" value="Shamshirband">
+											</div>
+											<div class="d-flex flex-row border-bottom">
+												<label for="email" class="me-5 mb-2 text-nowrap"> E-mail</label>
+												<p id="email" class="ms-5 mb-1 w-100 text-end"> avocado@gmail.com</p>
+												<input name="email" style="display: none;"
+													class="justify-content-end m-auto me-0 align-self-end" type="text"
+													id="emailEdit" value="avocado@gmail.com">
+											</div>
+											<div class="d-flex flex-row border-bottom">
+												<label for="dob" class="me-5 mb-2 text-nowrap"> Date of birth</label>
+												<p id="dob" class="ms-5 mb-1 w-100 text-end"> 15/02/1989</p>
+												<input name="dob" style="display: none;"
+													class="justify-content-end m-auto  me-0 align-self-end" type="date"
+													id="dobEdit" value="">
+											</div>
+											<div class="d-flex flex-row border-bottom ">
+												<p class="me-5 mb-1 text-nowrap"> Rating</p>
+												<p class="ms-5 mb-1 w-100 text-end"> 5</p>
+											</div>
+											<div class="d-flex flex-row border-bottom ">
+												<p class="me-5 mb-1 text-nowrap"> Posts</p>
+												<p class="ms-5 mb-1 w-100 text-end"> 1</p>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-4 m-auto">
-									<button class="btn btn-primary align-self-center m-auto">Edit profile</button>
-								</div>
+									<div class="col-4 m-auto">
+										<button id="editBtn" type="button" class="btn btn-primary align-self-center m-auto"
+											onclick="editProfile()">Edit profile</button>
+										<button id="cancelBtn" type="reset"
+											class="btn btn-primary align-self center m-auto mb-5"
+											style="display:none;" onclick="cancelEdit()">Cancel</button>
+										<button id="saveBtn" type="submit"
+											class="btn btn-primary align-self center m-auto"
+											style="display:none;">Save</button>
+									</div>
 							</div>
+						</form>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -116,7 +141,8 @@
 				<div class="container-fluid">
 					<div class="row py-1">
 						<div class="col"></div>
-						<div class="col-10 border border-2 border-dark rounded-1 m-0 p-0 shadow p-0 mb-5 bg-body rounded">
+						<div
+							class="col-10 border border-2 border-dark rounded-1 m-0 p-0 shadow p-0 mb-5 bg-body rounded">
 							<div class="container-fluid m-0 p-0">
 								<div class="d-flex flex-column">
 									<h2>Colossus</h2>
@@ -143,19 +169,20 @@
 												<p class="pt-3">4 comments</p>
 											</div>
 											<div class="col">
-												<a class="btn btn-primary text-nowrap p-0 m-auto p-2" href="#" role="button">
+												<a class="btn btn-primary text-nowrap p-0 m-auto p-2" href="#"
+													role="button">
 													<p class="m-auto">Open full post</p>
 												</a>
 											</div>
 											<div class="col d-flex flex-row align-items-center">
 												<p class="">5</p>
 												<button class="btn" type="submit">
-													<i class="fa-solid fa-caret-up fa-3x mx-1" ></i>
+													<i class="fa-solid fa-caret-up fa-3x mx-1"></i>
 												</button>
 												<button class="btn" type="submit">
 													<i class="fa-solid fa-caret-down fa-3x mx-1"></i>
 												</button>
-												
+
 												<p class="pt-1">0</p>
 											</div>
 										</div>
@@ -190,7 +217,9 @@
 	</footer>
 	<!-- BootStrap JS and Popper for dropdowns, tooltips and dropovers -->
 	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
+	<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
 	<script src="src/bootstrap.bundle.js"></script>
+	<script src="src/scripts.js"></script>
 </body>
 
 </html>
