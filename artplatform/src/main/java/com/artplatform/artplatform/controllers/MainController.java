@@ -1,8 +1,11 @@
 package com.artplatform.artplatform.controllers;
 
+import com.artplatform.artplatform.user.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController {
@@ -13,16 +16,12 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login( Model model) {
+    @GetMapping("/profile")
+    public String profile( Model model) {
         model.addAttribute("title", "Art Platform - Auth");
-        return "auth";
+        return "profile";
     }
 
-    @GetMapping("/registration")
-    public String registration( Model model) {
-        model.addAttribute("title", "Art Platform - Profile");
-        return "registration_page";
-    }
+
 
 }

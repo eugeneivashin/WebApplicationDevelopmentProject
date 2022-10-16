@@ -15,11 +15,11 @@ public class UserConfig {
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
             User user1 = new User( "Mark", "mark@gmail.com",
-                    LocalDate.of(2000, Month.JANUARY, 5),
+                    "male",
                     "password_creative");
 
             User user2 = new User( "2", "2@gmail.com",
-                    LocalDate.of(1977, Month.NOVEMBER, 19),
+                    "female",
                     "very_creative");
 
             userRepository.saveAll(

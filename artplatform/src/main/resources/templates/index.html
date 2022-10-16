@@ -46,8 +46,12 @@
 				</div>
 				<div class="col-3">	
 					<div class="d-flex flex-row gap-2 d-md-flex">
-						<button class="btn btn-primary me-md-2 text-nowrap" type="button">Sign In</button>
-						<button class="btn btn-primary text-nowrap" type="button">Sign Up</button>
+						<form action="/auth" class="btn btn-primary me-md-2 text-nowrap" method="get">
+							<input type="submit" value = "Sign In">
+						</form>
+						<form action="/auth" class="btn btn-primary text-nowrap" method="get">
+							<input type="submit" value = "Sign Up">
+						</form>
 						<p class="m-auto text-nowrap" style="display:none;"> Signed in as <a class="text-nowrap" href="">El negro</a></p>
 						<button class="btn btn-primary text-nowrap" style="display:none;" type="button">Logout</button>
 					</div>

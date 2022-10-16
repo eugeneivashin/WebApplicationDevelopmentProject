@@ -19,8 +19,8 @@ public class UserService {
     }
 
     public List<User> getUsers() {
-            return userRepository.findAll();
-        }
+        return userRepository.findAll();
+    }
 
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
@@ -30,5 +30,10 @@ public class UserService {
         }
         userRepository.save(user);
     }
-}
 
+    public Optional<User> loginUser(String email, String password){
+        System.out.println(email + password);
+        return userRepository.userLogin(email, password);
+    }
+
+}

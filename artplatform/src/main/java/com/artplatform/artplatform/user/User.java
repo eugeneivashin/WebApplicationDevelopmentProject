@@ -14,10 +14,9 @@ public class User {
     private Integer id;
     private String username;
 
-    @JsonFormat(pattern="yyyy-MM-ddd", shape=JsonFormat.Shape.STRING)
     private String email;
 
-    private LocalDate dob;
+    private String gender;
 
     private String password;
 
@@ -54,29 +53,35 @@ public class User {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public String getGender() {
+        return gender;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public User(String username, String email, LocalDate dob, String password) {
+    public User(String username, String email, String gender, String password) {
         this.username = username;
         this.email = email;
-        this.dob = dob;
+        this.gender = gender;
         this.password = password;
     }
 
     public User() {
     }
 
-    public User(Integer id, String username, String email, String password, LocalDate dob) {
+    public User(Integer id, String username, String email, String password, String gender) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.dob = dob;
+        this.gender = gender;
+        this.password = password;
+    }
+
+    public User(String email, String password)
+    {
+        this.email = email;
         this.password = password;
     }
 
@@ -86,7 +91,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", dob=" + dob +
+                ", gender=" + gender +
                 ", password='" + password + '\'' +
                 '}';
     }
