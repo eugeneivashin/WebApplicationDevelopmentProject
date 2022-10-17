@@ -1,3 +1,28 @@
+body{
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url("https://www.wallpaperbetter.com/wallpaper/884/236/937/whales-amp-ships-fantasy-art-hd-1080P-wallpaper.jpg");
+}
+header{
+    background-color: #30332E;
+}
+.btn{
+    background-color: #62BBC1;
+}
+#downvoteBtn,#upvoteBtn{
+    background-color: #FFFFFF;
+}
+h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #FFFBFC;
+}
+.border, .border-0{
+    border-color: red;
+}
 p{
     font-size: 1rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.bg-body{
+    background-color: #FFFBFC !important;
 }

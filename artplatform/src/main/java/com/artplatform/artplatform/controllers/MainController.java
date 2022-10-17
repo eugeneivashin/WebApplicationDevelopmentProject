@@ -21,7 +21,11 @@ public class MainController {
         model.addAttribute("title", "Art Platform - Auth");
         return "profile";
     }
-
+    @GetMapping("/post")
+    public String post( Model model) {
+        model.addAttribute("title", "Art Platform - Post");
+        return "post";
+    }
 
 
 }

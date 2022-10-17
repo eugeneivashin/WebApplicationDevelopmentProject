@@ -14,18 +14,19 @@
 
 	<!-- JQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-	<script type="text/javascript" th:src="@{/js/script.js}"></script>
-	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
-	<!-- BootStrap CSS -->
+	
+	<!-- BootStrap and CSS -->
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+	<link th:href="@{/css/style.css}" rel="stylesheet">
 	<link rel="stylesheet" href="src/bootstrap.css">
 	<link rel="stylesheet" href="src/style.css">
 
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
 </head>
 
 <body>
 	<header>
-		<div class="px-5 py-2 w-100 border-bottom border-5 border-dark">
+		<div class="px-5 py-2 w-100">
 			<a href="index.html" style="text-decoration:none;color:black;">
 				<h1 class="px-5">ART PLATFORM</h1>
 			</a>
@@ -36,23 +37,27 @@
 			<div class="row py-2">
 				<div class="col"></div>
 				<div class="col">
-									<!-- Pills navs -->
-				<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-					<li class="nav-item" role="presentation">
-						<a class="nav-link active" id="tab-login" data-bs-toggle="pill" href="#pills-login" role="tab"
-							aria-controls="pills-login" aria-selected="true">Login</a>
-					</li>
-					<li class="nav-item" role="presentation">
-						<a class="nav-link" id="tab-register" data-bs-toggle="pill" href="#pills-register" role="tab"
-							aria-controls="pills-register" aria-selected="false">Register</a>
-					</li>
-				</ul>
-				<!-- Pills navs -->
+					<!-- Pills navs -->
+					<div class="container bg-body rounded-2">
+						<!-- Pills navs -->
+						<ul class="nav nav-pills nav-justified mb-3 mt-5 pt-4" id="ex1" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" id="tab-login" data-bs-toggle="pill" href="#pills-login"
+									role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="tab-register" data-bs-toggle="pill" href="#pills-register"
+									role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+							</li>
+						</ul>
+						<!-- Pills navs -->
 
-				<!-- Pills content -->
-					<div class="tab-content">
-						<div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-								<form th:action="@{loginUser}" method="post" th:object="${user}">
+						<!-- Pills content -->
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+								aria-labelledby="tab-login">
+								<form th:action="@{loginUser}" method="post" th:object="${user}" form
+									class="needs-valitation">
 									<!-- Email input -->
 									<div class="form-outline mb-4">
 										<input type="email" id="loginName" class="form-control" th:field="*{email}" />
@@ -60,14 +65,16 @@
 									</div>
 									<!-- Password input -->
 									<div class="form-outline mb-4">
-										<input type="password" id="loginPassword" class="form-control" th:field="*{password}"/>
+										<input type="password" id="loginPassword" class="form-control"
+											th:field="*{password}" />
 										<label class="form-label" for="loginPassword">Password</label>
 									</div>
 									<!-- Submit button -->
 									@ -68,42 +68,49 @@
 								</form>
-						</div>
-						<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+							</div>
+							<div class="tab-pane fade" id="pills-register" role="tabpanel"
+								aria-labelledby="tab-register">
 								<form th:action="@{registerUser}" method="post" th:object="${user}">
 
 									<!-- Name input -->
@@ -82,24 +89,27 @@
 
 									<!-- Username input -->
 									<div class="form-outline mb-4">
-										<input type="text" id="username" class="form-control" th:field="*{username}"/>
+										<input id="registerUsername" type="text" class="form-control"
+											th:field="*{username}" />
 										<label class="form-label" for="username">Username</label>
 									</div>
 
 									<!-- Email input -->
 									<div class="form-outline mb-4">
-										<input type="email" id="email" class="form-control" th:field="*{email}"/>
+										<input id="registerEmail" type="email" class="form-control"
+											th:field="*{email}" />
 										<label class="form-label" for="email">Email</label>
 									</div>
 
 									<div class="form-outline mb-4">
-										<input type="text" id="gender" class="form-control" th:field="*{gender}"/>
+										<input type="text" id="gender" class="form-control" th:field="*{gender}" />
 										<label class="form-label" for="gender">Gender</label>
 									</div>
 
 									<!-- Password input -->
 									<div class="form-outline mb-4">
-										<input type="password" id="password" class="form-control" th:field="*{password}"/>
+										<input type="password" id="registerPassword" class="form-control"
+											th:field="*{password}" />
 										<label class="form-label" for="password">Password</label>
 									</div>
 
@@ -114,15 +124,16 @@
 
 									<!-- Submit button -->
 									<button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-						</form>
+								</form>
+							</div>
+						</div>
 					</div>
+						<!-- Pills content -->
+					</div>
+					<div class="col"></div>
 				</div>
-				<!-- Pills content -->
-				</div>
-				<div class="col"></div>
-			</div>
 
-		</div>
+			</div>
 	</main>
 	<footer>
 	</footer>
