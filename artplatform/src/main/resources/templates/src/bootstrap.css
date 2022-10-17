@@ -37,6 +37,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
+  --bs-darkblue: #38618C;
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -7261,6 +7262,11 @@ textarea.form-control-lg {
 .border-dark {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-dark-rgb), var(--bs-border-opacity)) !important;
+}
+
+.border-darkblue {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-darkblue-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-white {
