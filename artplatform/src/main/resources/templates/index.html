@@ -46,13 +46,13 @@
 				</div>
 				<div class="col-3">	
 					<div class="d-flex flex-row gap-2 d-md-flex">
-						<form action="/auth" class="btn btn-primary me-md-2 text-nowrap" method="get">
-							<input type="submit" value = "Sign In">
+						<form action="/auth" class=" me-md-2 text-nowrap" method="get">
+							<button class="btn btn-primary" type="submit" value = "Sign In"><p class="m-auto">Sign In</p></button>
 						</form>
-						<form action="/auth" class="btn btn-primary text-nowrap" method="get">
-							<input type="submit" value = "Sign Up">
+						<form action="/auth" class="text-nowrap" method="get">
+							<button class="btn btn-primary" type="submit" value = "Sign Up"><p class="m-auto">Sign Up</p></button>
 						</form>
-						<p class="m-auto text-nowrap" style="display:none;"> Signed in as <a class="text-nowrap" href="">El negro</a></p>
+						<p id="signedText" class="m-auto text-nowrap" style="display:none;"> Signed in as <a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">El hombre</a></p>
 						<button class="btn btn-primary text-nowrap" style="display:none;" type="button">Logout</button>
 					</div>
 				</div>
@@ -96,10 +96,10 @@
 											<p class="text-nowrap">Posted by</p>
 										</div>
 										<div class="ps-1 mx-0">
-											<a class="text-nowrap" href="">El negro</a>
+											<a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">El hombre</a>
 										</div>
 										<div class="pe-3 mx-1 mx-auto flex-fill">
-											<p class="text-nowrap text-end">2 hours ago</p>
+											<p class="text-nowrap text-end p-0">2 hours ago</p>
 										</div>
 									</div>
 									<p class="h-auto">I really like the game Shadow of the Colossus. Check out the
@@ -111,23 +111,22 @@
 									<div class="container-fluid border-top border-5 border-dark p-2">
 										<div class="d-flex flex-row justify-content-between align-items-center">
 											<div class="col align-content-start">
-												<p class="pt-3">4 comments</p>
+												<p class="h4">4 comments</p>
 											</div>
 											<div class="col">
 												<a class="btn btn-primary text-nowrap p-0 m-auto p-2" href="#" role="button">
-													<p class="m-auto">Open full post</p>
+													<p class="m-auto h4">Open full post</p>
 												</a>
 											</div>
 											<div class="col d-flex flex-row align-items-center">
-												<p class="">5</p>
+												<p class="h4 me-2">5</p>
 												<button id="upvoteBtn" class="btn" type="submit">
 													<i class="fa-solid fa-caret-up fa-3x mx-1" ></i>
 												</button>
 												<button id="downvoteBtn" class="btn" type="submit">
 													<i class="fa-solid fa-caret-down fa-3x mx-1"></i>
 												</button>
-												
-												<p class="pt-1">0</p>
+												<p class="h4 ms-2">0</p>
 											</div>
 										</div>
 									</div>
