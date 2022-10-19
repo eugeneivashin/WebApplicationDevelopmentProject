@@ -19,6 +19,7 @@
 	<link th:href="@{/css/bootstrap.css}" rel="stylesheet">
 	<link th:href="@{/css/style.css}" rel="stylesheet">
 
+	<script type="text/javascript" src="src/postInteraction.js"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
 	<link rel="stylesheet" href="src/bootstrap.css">
 	<link rel="stylesheet" href="src/style.css">
@@ -26,7 +27,7 @@
 </head>
 
 <body>
-	<header>
+	<header  class="w-100 sticky-top">
 		<div class="px-5 py-2 w-100">
 			<h1 class="px-5" style="user-select:none">ART PLATFORM</h1>
 		</div>
@@ -120,10 +121,10 @@
 											</div>
 											<div class="col d-flex flex-row align-items-center">
 												<p class="h4 me-2">5</p>
-												<button id="upvoteBtn" class="btn" type="submit">
+												<button id="upvoteBtn" onClick="upVote()" class="btn" type="submit">
 													<i class="fa-solid fa-caret-up fa-3x mx-1" ></i>
 												</button>
-												<button id="downvoteBtn" class="btn" type="submit">
+												<button id="downvoteBtn" onClick="downVote()" class="btn" type="submit">
 													<i class="fa-solid fa-caret-down fa-3x mx-1"></i>
 												</button>
 												<p class="h4 ms-2">0</p>
@@ -131,21 +132,15 @@
 										</div>
 									</div>
 									<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto">
-										<div class="col-auto">
 											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
 												role="button"><p class="m-auto">#coloss</p>
 											</a>
-										</div>
-										<div class="col-auto">
 											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
 												role="button"><p class="m-auto">#digital</p>
 											</a>
-										</div>
-										<div class="col-auto">
 											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
 												role="button"><p class="m-auto">#videogame</p>
 											</a>
-										</div>
 									</div>
 								</div>
 							</div>

@@ -21,11 +21,12 @@
 	<link rel="stylesheet" href="src/bootstrap.css">
 	<link rel="stylesheet" href="src/style.css">
 
+	<script type="text/javascript" src="src/authpage.js"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.js}"></script>
 </head>
 
 <body>
-	<header>
+	<header  class="w-100 sticky-top">
 		<div class="px-5 py-2 w-100">
 			<a href="index.html" style="text-decoration:none;color:black;">
 				<h1 class="px-5">ART PLATFORM</h1>
@@ -75,7 +76,7 @@
 							</div>
 							<div class="tab-pane fade" id="pills-register" role="tabpanel"
 								aria-labelledby="tab-register">
-								<form th:action="@{registerUser}" method="post" th:object="${user}">
+								<form th:action="@{registerUser}" method="post" th:object="${user}" class="needs-validation">
 
 									<!-- Name input -->
 
@@ -92,6 +93,9 @@
 										<input id="registerUsername" type="text" class="form-control"
 											th:field="*{username}" />
 										<label class="form-label" for="username">Username</label>
+										<div class="valid-feedback">
+											Username is not available
+										</div>
 									</div>
 
 									<!-- Email input -->
@@ -100,9 +104,12 @@
 											th:field="*{email}" />
 										<label class="form-label" for="email">Email</label>
 									</div>
-
-									<div class="form-outline mb-4">
-										<input type="text" id="gender" class="form-control" th:field="*{gender}" />
+									<div class="form-outline my-4 flex flex-column">
+										<select name="gender" class="form-select">
+											<option selected>Choose</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
+										</select>
 										<label class="form-label" for="gender">Gender</label>
 									</div>
 
@@ -115,15 +122,12 @@
 
 
 									<!-- Repeat Password input -->
-									<!--
                                     <div class="form-outline mb-4">
                                         <input type="password" id="registerRepeatPassword" class="form-control" />
                                         <label class="form-label" for="registerRepeatPassword">Repeat password</label>
                                     </div>
-                                    -->
-
 									<!-- Submit button -->
-									<button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
+									<button type="submit" onClick="sumbitRegistration()" class="btn btn-primary btn-block mb-3">Sign Up</button>
 								</form>
 							</div>
 						</div>
@@ -132,7 +136,6 @@
 					</div>
 					<div class="col"></div>
 				</div>
-
 			</div>
 	</main>
 	<footer>

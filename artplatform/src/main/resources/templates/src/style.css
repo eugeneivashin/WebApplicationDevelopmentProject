@@ -13,16 +13,15 @@ header{
 .btn:active{
     background-color: #EF476F !important;
 }
-
+.btn:hover{
+    background-color: #EF476F !important;
+}
 #downvoteBtn,#upvoteBtn{
     background-color: #FFFFFF;
 }
 h1, #signedText{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #FFFBFC;
-}
-.border, .border-0{
-    border-color: red;
 }
 p{
     font-size: 1rem;
@@ -32,7 +31,7 @@ p{
     background-color: #FFFBFC !important;
 }
 
-#profileLink{
+#profileLink, .nav-item .nav-link{
     color: #EF476F;
 }
 .nav-item .nav-link.active{
