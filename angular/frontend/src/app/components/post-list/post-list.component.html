@@ -1,0 +1,28 @@
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>post_title</th>
+            <th>post_description</th>
+            <th>post_image</th>
+            <th>post_upvote</th>
+            <th>post_downvote</th>
+            <th>post_date</th>
+            <th>Good post?</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let singlePost of posts">
+            <td>{{ singlePost.post_title }}</td>
+            <td>{{ singlePost.post_description }}</td>
+            <td>{{ singlePost.post_image }}</td>
+            <td>{{ singlePost.post_upvote }}</td>
+            <td>{{ singlePost.post_downvote }}</td>
+            <td>{{ singlePost.post_date }}</td>
+            <td>
+                <div *ngIf="singlePost.post_upvote > singlePost.post_downvote; else elseBlock">You are doing well</div>
+                <ng-template #elseBlock>Hahahahahhah</ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
