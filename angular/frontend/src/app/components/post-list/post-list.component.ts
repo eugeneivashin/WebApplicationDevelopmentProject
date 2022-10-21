@@ -32,7 +32,7 @@ export class PostListComponent implements OnInit {
     )
   }
 
-  /*        test
+  /*        test ne trogat
 
   displayPosts2(){
 

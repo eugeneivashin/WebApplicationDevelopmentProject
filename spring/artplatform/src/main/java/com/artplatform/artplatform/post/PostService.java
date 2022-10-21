@@ -16,8 +16,6 @@ public class PostService {
     }
 
     public List<Post> getPosts(){
-        System.out.println("im here");
-        System.out.println(postRepository.findAll());
         return postRepository.findAll();
     }
 }
