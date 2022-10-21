@@ -12,6 +12,7 @@ import { PostViewComponent } from './components/post-view/post-view.component';
 const routes: Routes = [
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'posts', component: PostListComponent},
+  {path: 'login', component: PostViewComponent},
   {path: '', redirectTo: '/posts', pathMatch: 'full'},
   {path: '**', redirectTo: '/posts', pathMatch: 'full'},
 ];

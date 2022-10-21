@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("http://localhost:4200")
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
+
     @Query("SELECT p FROM Post p where user_id=?1")
-    Page<Post> findUserPosts(@Param("id") Integer id, Pageable pageable);
+    Page<Post> findUserPosts(@Param("id") Integer id,  Pageable pageable);
 
     @Query("SELECT p FROM Post p where user_id=?1")
     Page<Post> findTagPosts(@Param("id") Integer id, Pageable pageable);
+
+    @Query("SELECT c FROM Comment c where post_id=?1")
+    Page<Post> findPostComments(@Param("id") Integer id, Pageable pageable);
 
 }
