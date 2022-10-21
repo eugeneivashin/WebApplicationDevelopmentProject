@@ -1,17 +1,26 @@
 package com.artplatform.artplatform.user;
 
+import com.artplatform.artplatform.comment.Comment;
+import com.artplatform.artplatform.post.Post;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name="user")
+@Getter
+@Setter
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String username;
 
     private String email;
@@ -20,47 +29,13 @@ public class User {
 
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Post> posts;
 
-    public Integer getId() {
-        return id;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Comment> comments;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
+    /*
     public User(String username, String email, String gender, String password) {
         this.username = username;
         this.email = email;
@@ -95,6 +70,8 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+     */
 
 
 }
