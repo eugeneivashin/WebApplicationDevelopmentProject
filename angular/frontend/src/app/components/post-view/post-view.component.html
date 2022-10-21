@@ -20,7 +20,17 @@
                     </div>
                 </div>
 
- 
+                <div class="row">Comment Section</div>
+                <div class="row" *ngFor="let singleComment of comments">
+                    <p>{{singleComment.id}}</p>
+                    <p>{{singleComment.comment_text}}</p>
+                    <p>{{singleComment.comment_date}}</p>
+                </div>
+                
+
+
+                
+
             </div>
         </div>
     </div>

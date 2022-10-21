@@ -9,4 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
+
+
 }

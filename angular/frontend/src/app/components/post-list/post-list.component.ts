@@ -31,12 +31,16 @@ export class PostListComponent implements OnInit {
       }
     )
   }
-/*
-  upvote(post: Post){
-    this.postService.upvote(post.id);
+
+
+  /*        test ne trogat
+
+  upvote(Post post){
+    this.postService.upvote();
   }
-*/
+
   /*        test
+
 
   displayPosts2(){
 

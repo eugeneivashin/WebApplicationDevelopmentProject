@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/classes/post';
 import { User } from 'src/app/classes/user';
+import { Comment } from 'src/app/classes/comment';
 import { PostService } from 'src/app/services/post.service';
 
 
@@ -14,6 +15,7 @@ export class PostViewComponent implements OnInit {
 
   post!: Post;
   user!: User;
+  comments: Comment[] = [];
 
   constructor(private postService: PostService,
     private route: ActivatedRoute) { }
@@ -39,6 +41,15 @@ export class PostViewComponent implements OnInit {
         this.user = data;
       }
     )
+
+    this.postService.getCommentsByPost(postId).subscribe(
+      data => {
+        this.comments = data;
+      }
+    )
+
+    
+
 
       /*
     this.postService.getCommentByPost(postId).subscribe(
