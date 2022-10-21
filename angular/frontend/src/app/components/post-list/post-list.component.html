@@ -1,28 +1,91 @@
-<table class="table table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>post_title</th>
-            <th>post_description</th>
-            <th>post_image</th>
-            <th>post_upvote</th>
-            <th>post_downvote</th>
-            <th>post_date</th>
-            <th>Good post?</th>
-        </tr>
-    </thead>
+<body>
+	<main>
+		<div class="container text-center">
+			<div class="row py-2">
+				<div class="col-3"></div>
+				<div class="col-6">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control rounded-2" placeholder="Search for tags"
+							aria-label="Searchbar" aria-describedby="basic-addon1">
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-3">	
+					<div class="d-flex flex-row gap-2 d-md-flex">
+						<form action="/auth" class="btn btn-primary me-md-2 text-nowrap" method="get">
+							<input type="submit" value = "Sign In">
+						</form>
+						<form action="/auth" class="btn btn-primary text-nowrap" method="get">
+							<input type="submit" value = "Sign Up">
+						</form>
+						<p class="m-auto text-nowrap" style="display:none;"> Signed in as <a class="text-nowrap" href="">El negro</a></p>
+						<button class="btn btn-primary text-nowrap" style="display:none;" type="button">Logout</button>
+					</div>
+				</div>
+			</div>
+			<div class="row py-2">
+				<div class="col"></div>
+				<div class="col-8">
+					<div class="row">
+						<div class="col">
+							<a class="btn btn-primary text-nowrap" href="#" role="button"><p class="m-auto">Make new post</p></a>
+						</div>
+						<div class="col"></div>
+						<div class="col-auto">
+							<button class="btn btn-primary me-md-2 text-nowrap" type="button">
+								<i class="fa-solid fa-fire"></i>
+							</button>
+							<button class="btn btn-primary me-md-2 text-nowrap" type="button">
+								<i class="fa-solid fa-thumbs-up"></i>
+							</button>
+							<button class="btn btn-primary text-nowrap" type="button">
+								<i class="fa-solid fa-bahai"></i>
+							</button>
+						</div>
+					</div>
 
-    <tbody>
-        <tr *ngFor="let singlePost of posts">
-            <td>{{ singlePost.post_title }}</td>
-            <td>{{ singlePost.post_description }}</td>
-            <td>{{ singlePost.post_image }}</td>
-            <td>{{ singlePost.post_upvote }}</td>
-            <td>{{ singlePost.post_downvote }}</td>
-            <td>{{ singlePost.post_date }}</td>
-            <td>
-                <div *ngIf="singlePost.post_upvote > singlePost.post_downvote; else elseBlock">You are doing well</div>
-                <ng-template #elseBlock>Hahahahahhah</ng-template>
-            </td>
-        </tr>
-    </tbody>
-</table>
+				</div>
+				<div class="col"></div>
+			</div>
+			<!-- Post template -->
+			<article class="">
+				<div class="container-fluid">
+					<div class="row py-1">
+						<div class="col"></div>
+						<!-- Post content -->
+
+
+                        <div class="main-content">
+                            <div class="section-content section-content-p-30">
+                                <div class="container-fluid">
+                                    <div class="container">
+                                        <div class="row" *ngFor="let singlePost of posts">
+                                        
+                                                <a routerLink="/posts/{{singlePost.id}}" routerLinkActive="active-link">{{ singlePost.post_title }}</a>
+                                                <h6>Posted at: {{ singlePost.post_date }}</h6>
+                                                <div class="post-box">
+                                                    <img src="{{ singlePost.post_image }}" class="īmg-responsive" style="height:auto; width:500px">
+                                                </div>
+                                                <h6>Posted upvotes: {{ singlePost.post_upvote }}</h6>
+                                                
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+						
+
+
+
+						<div class="col"></div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</main>
+</body>

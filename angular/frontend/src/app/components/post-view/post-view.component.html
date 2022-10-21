@@ -1,0 +1,27 @@
+<div class="main-content" style="margin-top: 125px;">
+    <div class="section-content section-content-p-30">
+        <div class="container-fluid">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <h6>Posted at: {{ post.post_date }}</h6>
+                        <hr>
+                        <div class="post-box">
+                            <img src="{{ post.post_image }}" class="īmg-responsive" style="height:auto; width:500px">
+                        </div>
+                        <h6>Posted upvotes: {{ post.post_upvote }}</h6>
+                        <p>Description: {{ post.post_description }}</p>
+                    </div>
+
+                    <div class="col">
+                        <p>Posted by: {{ user.username }}</p>
+                        <p>Authors gender: {{ user.gender }}</p>
+                    </div>
+                </div>
+
+ 
+            </div>
+        </div>
+    </div>
+</div>
