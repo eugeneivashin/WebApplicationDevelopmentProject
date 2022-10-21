@@ -37,8 +37,12 @@ export class PostService {
   getUserByPost(thePostId: number): Observable<User>{
     return this.httpClient.get<User>(`${this.endUrl}/${thePostId}/user`);
   }
-
-
+/*
+  upvote(thePostId: number){
+    this.httpClient.put<any>('https://jsonplaceholder.typicode.com/posts/1', body)
+        .subscribe(data => this.postId = data.id);
+  }
+*/
 }
 
 interface GetResponse {

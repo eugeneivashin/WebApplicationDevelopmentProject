@@ -32,6 +32,10 @@ export class PostListComponent implements OnInit {
     )
   }
 
+  upvote(Post post){
+    this.postService.upvote();
+  }
+
   /*        test
 
   displayPosts2(){
