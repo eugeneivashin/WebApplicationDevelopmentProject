@@ -7,9 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
+  {path: 'search/:keyword', component: PostListComponent},
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'posts', component: PostListComponent},
   {path: 'login', component: PostViewComponent},
@@ -21,7 +23,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     PostListComponent,
-    PostViewComponent
+    PostViewComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

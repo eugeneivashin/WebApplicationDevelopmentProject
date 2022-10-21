@@ -11,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
+  searchMode: boolean = false;
 
   //currentPostId: number = 1;
 
@@ -25,11 +26,40 @@ export class PostListComponent implements OnInit {
   }
 
   displayPosts(){
+
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    console.log(this.searchMode);
+
+    if(this.searchMode){
+      this.method1();
+    }
+    else{
+      this.getAllPosts();
+
+    }
+  }
+
+  getAllPosts(){
     this.postService.getAllPosts().subscribe(
       data => {
         this.posts = data;
       }
     )
+  }
+
+  method1(){
+
+    const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+
+    console.log(searchKeyword);
+
+    this.postService.searchPosts(searchKeyword).subscribe(
+      data => {
+        this.posts = data;
+      }
+    )
+
+
   }
 
   /*        test ne trogat

@@ -64,7 +64,7 @@
                                     <div class="container">
                                         <div class="row" *ngFor="let singlePost of posts">
                                         
-                                                <a routerLink="/posts/{{singlePost.id}}" routerLinkActive="active-link">{{ singlePost.post_title }}</a>
+                                                <a routerLink="/posts/{{singlePost.id}}" routerLinkActive="active-link">{{ singlePost.title }}</a>
                                                 <h6>Posted at: {{ singlePost.post_date }}</h6>
                                                 <div class="post-box">
                                                     <img src="{{ singlePost.post_image }}" class="īmg-responsive" style="height:auto; width:500px">
@@ -73,6 +73,12 @@
                                                 
 
                                         </div>
+
+										<!--if empty-->
+										<div *ngIf="posts?.length == 0" class="alert alert-warning" role="alert">
+											No Posts Found
+										</div>
+
                                     </div>
                                 </div>
                             </div>
