@@ -9,6 +9,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     PostListComponent,
     PostViewComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
