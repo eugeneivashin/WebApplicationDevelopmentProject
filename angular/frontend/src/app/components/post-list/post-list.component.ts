@@ -23,19 +23,23 @@ export class PostListComponent implements OnInit {
       //this.displayPosts2();
       this.displayPosts();
     })
+
+    let sub = this.route
+    .data
+    .subscribe(v => console.log(v + 'IM DATA'));
   }
 
   displayPosts(){
 
+
+    this.posts.splice(0);
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
-    console.log(this.searchMode);
 
     if(this.searchMode){
       this.method1();
     }
     else{
       this.getAllPosts();
-
     }
   }
 
@@ -50,23 +54,30 @@ export class PostListComponent implements OnInit {
   method1(){
 
     const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+    let tempPosts: Post[]=[];
 
-    console.log(searchKeyword);
+    var splitted = searchKeyword.split(" ", 10);
 
-    this.postService.searchPosts(searchKeyword).subscribe(
-      data => {
-        this.posts = data;
-      }
-    )
-
-
+    for (let i = 0; i < splitted.length; i++) {
+        console.log(splitted[i])
+        this.postService.searchPostsByTags(splitted[i]).subscribe(
+          data => {
+            for (let i = 0; i < data.length; i++)
+            {
+              tempPosts.push(data[i]);
+            }
+          }
+        )
+      this.posts = tempPosts;
+    }
   }
 
-  /*        test ne trogat
 
-  upvote(Post post){
+/*
+  upvote(post: Post){
     this.postService.upvote();
   }
+  */
 
   /*        test
 
