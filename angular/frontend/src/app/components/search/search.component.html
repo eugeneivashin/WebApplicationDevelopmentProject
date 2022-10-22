@@ -1,12 +1,34 @@
-<div class="form-header">
-    <div class="input-group mb-3">
-        <input #searchPostInput type="text"
-        class="form-control rounded-2"
-        aria-label="Searchbar" 
-        aria-describedby="basic-addon1"
-        placeholder="Search for posts"
-        class="au-input au-input-xl"
-        (keyup.enter) = "searchForPosts(searchPostInput.value)" />
-        <button (click)="searchForPosts(searchPostInput.value)" class="btn btn-outline-secondary">Search</button>
+<header  class="w-100 sticky-top">
+    <div class="px-5 py-2 w-100 row align-items-center">
+        <div class="col-3">
+            <a href="" style="text-decoration:none;color:black;">
+				<h1 class="px-5 h1">ART PLATFORM</h1>
+			</a>
+        </div>
+        <div class="col-6">
+            <div class="form-header">
+                <div class="input-group mb-3r m-auto">
+                    <input #searchPostInput type="text"
+                    class="form-control rounded-2 au-input au-input-x"
+                    aria-label="Searchbar" 
+                    aria-describedby="basic-addon1"
+                    placeholder="Search for posts"
+                    (keyup.enter) = "searchForPosts(searchPostInput.value)" />
+                    <button (click)="searchForPosts(searchPostInput.value)" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 ">
+                <div class="d-flex flex-row justify-content-end gap-2 align-items-center">
+                    <button class="btn btn-primary me-md-2text-nowrap" style="display:none;" type="button"><p class="m-auto">Sign In</p></button>
+                    <button class="btn btn-primary text-nowrap" style="display:none;" type="button"><p class="m-auto">Sign Up</p></button>
+                    <p id="signedText" class="text-nowrap my-0">Signed in as 
+                        <a id="profileLink" style="text-decoration: none;" class="my-0" href="">El hombre</a>
+                    </p>
+                    <button class="btn btn-primary text-nowrap" type="button"><p class="m-auto">Logout</p></button>
+                </div>
+        </div>
     </div>
-</div>
+  </header>

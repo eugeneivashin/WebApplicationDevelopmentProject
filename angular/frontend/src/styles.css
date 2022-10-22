@@ -20,10 +20,11 @@ header{
     background-color: #FFFFFF;
 }
 h1, #signedText{
+    font-size: 1rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #FFFBFC;
 }
-p{
+p, a{
     font-size: 1rem;
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
