@@ -6,18 +6,22 @@ body{
 header{
     background-color: #30332E;
 }
-.btn{
+.btn.btn-primary, .btn-outline-secondary{
     background-color: #62BBC1;
+}
+
+.btn:active{
+    background-color: #EF476F !important;
+}
+.btn:hover{
+    background-color: #EF476F !important;
 }
 #downvoteBtn,#upvoteBtn{
     background-color: #FFFFFF;
 }
-h1{
+h1, #signedText{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #FFFBFC;
-}
-.border, .border-0{
-    border-color: red;
 }
 p{
     font-size: 1rem;
@@ -25,4 +29,11 @@ p{
 }
 .bg-body{
     background-color: #FFFBFC !important;
+}
+
+#profileLink, .nav-item .nav-link{
+    color: #EF476F;
+}
+.nav-item .nav-link.active{
+    background-color: #EF476F;
 }

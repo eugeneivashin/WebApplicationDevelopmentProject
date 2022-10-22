@@ -43,7 +43,6 @@ export class PostService {
     return this.httpClient.get<User>(`${this.endUrl}/${thePostId}/user`);
   }
 
-
   getCommentsByPost(thePostId: number): Observable<Comment[]>{
     return this.httpClient.get<GetResponse>(`${this.endUrl}/${thePostId}/comments`).pipe(
       map(response => response._embedded.comments)
@@ -62,6 +61,14 @@ export class PostService {
   }
 
 
+
+
+/*
+  upvote(thePostId: number){
+    this.httpClient.put<any>('https://jsonplaceholder.typicode.com/posts/1', body)
+        .subscribe(data => this.postId = data.id);
+  }
+*/
 
 }
 

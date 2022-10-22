@@ -64,6 +64,13 @@ export class PostListComponent implements OnInit {
 
   /*        test ne trogat
 
+  upvote(Post post){
+    this.postService.upvote();
+  }
+
+  /*        test
+
+
   displayPosts2(){
 
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has("id");

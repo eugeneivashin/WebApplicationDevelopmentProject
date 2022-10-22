@@ -1,4 +1,3 @@
-<body>
 	<main>
 		<div class="container text-center">
 			<div class="row py-2">
@@ -12,16 +11,24 @@
 						</button>
 					</div>
 				</div>
-				<div class="col-3">	
+				<div class="col-3">
 					<div class="d-flex flex-row gap-2 d-md-flex">
+
 
 
 
 						<a routerLink="/login" routerLinkActive="active-link">Login</a>
 						<form action="/auth" class="btn btn-primary text-nowrap" method="get">
 							<input type="submit" value = "Sign Up">
+
+						<form action="/auth" class=" me-md-2 text-nowrap" method="get">
+							<button class="btn btn-primary" type="submit" value = "Sign In"><p class="m-auto">Sign In</p></button>
 						</form>
-						<p class="m-auto text-nowrap" style="display:none;"> Signed in as <a class="text-nowrap" href="">El negro</a></p>
+						<form action="/auth" class="text-nowrap" method="get">
+							<button class="btn btn-primary" type="submit" value = "Sign Up"><p class="m-auto">Sign Up</p></button>
+
+						</form>
+						<p id="signedText" class="m-auto text-nowrap" style="display:none;"> Signed in as <a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">El hombre</a></p>
 						<button class="btn btn-primary text-nowrap" style="display:none;" type="button">Logout</button>
 					</div>
 				</div>
@@ -50,49 +57,77 @@
 				</div>
 				<div class="col"></div>
 			</div>
-			<!-- Post template -->
-			<article class="">
+			<article class="" *ngFor="let singlePost of posts">
 				<div class="container-fluid">
 					<div class="row py-1">
 						<div class="col"></div>
 						<!-- Post content -->
-
-
-                        <div class="main-content">
-                            <div class="section-content section-content-p-30">
-                                <div class="container-fluid">
-                                    <div class="container">
-                                        <div class="row" *ngFor="let singlePost of posts">
-                                        
-                                                <a routerLink="/posts/{{singlePost.id}}" routerLinkActive="active-link">{{ singlePost.title }}</a>
-                                                <h6>Posted at: {{ singlePost.post_date }}</h6>
-                                                <div class="post-box">
-                                                    <img src="{{ singlePost.post_image }}" class="īmg-responsive" style="height:auto; width:500px">
-                                                </div>
-                                                <h6>Posted upvotes: {{ singlePost.post_upvote }}</h6>
-                                                
-
-                                        </div>
-
-										<!--if empty-->
-										<div *ngIf="posts?.length == 0" class="alert alert-warning" role="alert">
-											No Posts Found
+						<div class="col-10 rounded-1 m-0 p-0 shadow-lg p-0 mb-5 bg-body rounded">
+							<div class="container-fluid m-0 p-0">
+								<div class="d-flex flex-column">
+									<!-- POST TITLE -->
+									<h2 class="mt-3">{{singlePost.post_title}}</h2>
+									<div class="d-flex flex-row py-1">
+										<div class="ps-3 mx-0">
+											<p class="text-nowrap">Posted by</p>
 										</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-						
-
-
-
+										<div class="ps-1 mx-0">
+											<!-- POST AUTHOR -->
+											<a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">El hombre</a>
+										</div>
+										<div class="pe-3 mx-1 mx-auto flex-fill">
+											<!-- POST DATE -->
+											<p class="text-nowrap text-end p-0">{{ singlePost.post_date }}</p>
+										</div>
+									</div>
+									<p class="h-auto">{{singlePost.post_description}}
+									</p>
+									<!-- POST IMAGE -->
+									<img class="img-fluid border border-dark border-5 rounded-1 m-2"
+										src="{{singlePost.post_image}}">
+									<div class="container-fluid border-top border-5 border-dark p-2">
+										<div class="d-flex flex-row justify-content-between align-items-center">
+											<div class="col align-content-start">
+												<p class="h4">4 comments</p>
+											</div>
+											<div class="col">
+												<a class="btn btn-primary text-nowrap p-0 m-auto p-2" href="#" role="button"
+												routerLink="/posts/{{singlePost.id}}" routerLinkActive="active-link">
+													<p class="m-auto h4">Open full post</p>
+												</a>
+											</div>
+											<div class="col d-flex flex-row align-items-center">
+												<!-- UPVOTE -->
+												<p class="h4 me-2">{{singlePost.post_upvote}}</p>
+												<button id="upvoteBtn" (click)="upvote(singlePost)" onClick="upVote()" class="btn" type="submit">
+													<i class="fa-solid fa-caret-up fa-3x mx-1" ></i>
+												</button>
+												<button id="downvoteBtn" onClick="downVote()" class="btn" type="submit">
+													<i class="fa-solid fa-caret-down fa-3x mx-1"></i>
+												</button>
+												<!-- DOWNVOTE -->
+												<p class="h4 ms-2">{{singlePost.post_downvote}}</p>
+											</div>
+										</div>
+									</div>
+									<!-- TAGS -->
+									<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto">
+											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
+												role="button"><p class="m-auto">#coloss</p>
+											</a>
+											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
+												role="button"><p class="m-auto">#digital</p>
+											</a>
+											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
+												role="button"><p class="m-auto">#videogame</p>
+											</a>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="col"></div>
 					</div>
 				</div>
 			</article>
 		</div>
 	</main>
-</body>
