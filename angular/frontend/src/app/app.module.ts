@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'posts', component: PostListComponent},
   {path: 'login', component: PostViewComponent},
-  {path: 'user/:id', component: ProfileComponent},
+  {path: 'users/:id', component: ProfileComponent},
   {path: '', redirectTo: '/posts', pathMatch: 'full'},
   {path: '**', redirectTo: '/posts', pathMatch: 'full'},
 ];

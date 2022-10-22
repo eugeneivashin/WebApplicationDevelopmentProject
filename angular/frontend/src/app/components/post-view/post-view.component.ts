@@ -16,7 +16,8 @@ export class PostViewComponent implements OnInit {
   post!: Post;
   user!: User;
   comments: Comment[] = [];
-
+  commentUsers: User[] = [];
+  
   constructor(private postService: PostService,
     private route: ActivatedRoute) { }
 

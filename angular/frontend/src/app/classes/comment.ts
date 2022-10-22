@@ -5,6 +5,7 @@ export class Comment {
         public comment_upvote: number,
         public comment_downvote: number,
         public comment_reply_to: number,
-        public comment_date: Date
+        public comment_date: Date,
+        public user_id: number
         ) {}
 }

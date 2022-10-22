@@ -50,7 +50,7 @@ export class PostService {
   }
 
   getSingleUser(theUserId: number): Observable<User>{
-    return this.httpClient.get<User>(`${this.endUrl}/user/${theUserId}}`)
+    return this.httpClient.get<User>(`http://localhost:8080/users/${theUserId}`)
   }
 
   // by keyword 
