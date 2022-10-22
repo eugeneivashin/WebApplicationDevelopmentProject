@@ -12,11 +12,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+
 
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -36,4 +37,12 @@ public class UserService {
         return userRepository.userLogin(email, password);
     }
 
+    public Optional<User> getByEmail(String email){
+        Optional<User> userOptional = userRepository.findUserByEmail(email);
+        if (userOptional.isPresent())
+        {
+            throw new IllegalStateException("email taken");
+        }
+        return userOptional;
+    }
 }

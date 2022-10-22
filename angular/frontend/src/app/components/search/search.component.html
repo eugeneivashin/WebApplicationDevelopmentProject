@@ -1,0 +1,12 @@
+<div class="form-header">
+    <div class="input-group mb-3">
+        <input #searchPostInput type="text"
+        class="form-control rounded-2"
+        aria-label="Searchbar" 
+        aria-describedby="basic-addon1"
+        placeholder="Search for posts"
+        class="au-input au-input-xl"
+        (keyup.enter) = "searchForPosts(searchPostInput.value)" />
+        <button (click)="searchForPosts(searchPostInput.value)" class="btn btn-outline-secondary">Search</button>
+    </div>
+</div>

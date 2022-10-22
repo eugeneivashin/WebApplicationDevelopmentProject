@@ -12,9 +12,8 @@ import java.util.List;
 @RequestMapping(path="/post")
 public class PostController {
 
-    @Autowired
     private final PostService postService;
-
+    @Autowired
     public PostController(PostService postService) {
         this.postService = postService;
     }

@@ -23,4 +23,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("SELECT c FROM Comment c where post_id=?1")
     Page<Post> findPostComments(@Param("id") Integer id, Pageable pageable);
 
+    Page<Post> findByTitleContaining (@Param("title") String title, Pageable pageable);
+
 }
