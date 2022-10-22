@@ -10,6 +10,7 @@ import { Comment } from '../classes/comment';
 })
 export class PostService {
 
+
   private endUrl = 'http://localhost:8080/posts';
 
   constructor(private httpClient: HttpClient) { }
@@ -47,6 +48,18 @@ export class PostService {
       map(response => response._embedded.comments)
     );
   }
+
+  // by keyword 
+  searchPosts(searchKeyword: string):  Observable<Post[]>{
+
+    const seacrhUrl = `${this.endUrl}/search/findByTitleContaining?title=${searchKeyword}`;
+
+    console.log(seacrhUrl);
+    return this.httpClient.get<GetResponse>(`${seacrhUrl}`).pipe(
+      map(response => response._embedded.posts)
+    );
+  }
+
 
 
 

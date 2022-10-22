@@ -1,16 +1,13 @@
 package com.artplatform.artplatform.post;
 
 import com.artplatform.artplatform.comment.Comment;
+import com.artplatform.artplatform.tag_list.Tag_List;
 import com.artplatform.artplatform.user.User;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -22,7 +19,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String post_title;
+    @Column(name="post_title", nullable=false)
+    private String title;
 
     private String post_description;
 
@@ -41,6 +39,9 @@ public class Post {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private Set<Comment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private Set<Tag_List> tag_lists;
 
 /*
     public Post(Integer id, String post_title, String post_description, String post_image,
