@@ -49,6 +49,10 @@ export class PostService {
     );
   }
 
+  getSingleUser(theUserId: number): Observable<User>{
+    return this.httpClient.get<User>(`${this.endUrl}/user/${theUserId}}`)
+  }
+
   // by keyword 
   searchPosts(searchKeyword: string):  Observable<Post[]>{
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/classes/post';
 import { PostService } from 'src/app/services/post.service';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-post-list',
@@ -12,7 +13,6 @@ export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   searchMode: boolean = false;
-
   //currentPostId: number = 1;
 
   constructor(private postService: PostService,
@@ -46,8 +46,9 @@ export class PostListComponent implements OnInit {
       }
     )
   }
+  
 
-  method1(){
+  method1(): void{
 
     const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
 
