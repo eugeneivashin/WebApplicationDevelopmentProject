@@ -13,14 +13,7 @@
 				</div>
 				<div class="col-3">	
 					<div class="d-flex flex-row gap-2 d-md-flex">
-
-
-
-
 						<a routerLink="/login" routerLinkActive="active-link">Login</a>
-						<form action="/auth" class="btn btn-primary text-nowrap" method="get">
-							<input type="submit" value = "Sign Up">
-
 						<form action="/auth" class=" me-md-2 text-nowrap" method="get">
 							<button class="btn btn-primary" type="submit" value = "Sign In"><p class="m-auto">Sign In</p></button>
 						</form>
@@ -73,7 +66,7 @@
 										</div>
 										<div class="ps-1 mx-0">
 											<!-- POST AUTHOR -->
-											<a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">El hombre</a>
+											<a id="profileLink" style="text-decoration: none;" class="text-nowrap" href="">USER</a>
 										</div>
 										<div class="pe-3 mx-1 mx-auto flex-fill">
 											<!-- POST DATE -->
@@ -99,7 +92,7 @@
 											<div class="col d-flex flex-row align-items-center">
 												<!-- UPVOTE -->
 												<p class="h4 me-2">{{singlePost.post_upvote}}</p>
-												<button id="upvoteBtn" (click)="upvote(singlePost)" onClick="upVote()" class="btn" type="submit">
+												<button id="upvoteBtn" onClick="upVote()" class="btn" type="submit">
 													<i class="fa-solid fa-caret-up fa-3x mx-1" ></i>
 												</button>
 												<button id="downvoteBtn" onClick="downVote()" class="btn" type="submit">
