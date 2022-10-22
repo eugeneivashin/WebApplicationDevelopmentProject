@@ -80,6 +80,12 @@ export class PostService {
     );
   }
 
+  getUserByComment(commentId: number):Observable<User>{
+
+    const tempEndUrl = 'http://localhost:8080/comments';
+
+    return this.httpClient.get<User>(`${tempEndUrl}/${commentId}/user`);
+  }
 
 
 
