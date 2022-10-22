@@ -70,6 +70,16 @@ export class PostService {
     );
   }
 
+  searchPostsByTagsAndTitles(searchKeyword: string):  Observable<Post[]>{
+
+    const seacrhUrlTag = `${this.endUrl}/search/findTagListPost?title=${searchKeyword}`;
+
+    console.log(seacrhUrlTag);
+    return this.httpClient.get<GetResponse>(`${seacrhUrlTag}`).pipe(
+      map(response => response._embedded.posts)
+    );
+  }
+
 
 
 
