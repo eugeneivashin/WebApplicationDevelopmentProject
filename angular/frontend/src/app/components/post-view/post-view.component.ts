@@ -17,7 +17,7 @@ export class PostViewComponent implements OnInit {
   user!: User;
   comments: Comment[] = [];
   commentUsers: User[] = [];
-  
+
   constructor(private postService: PostService,
     private route: ActivatedRoute) { }
 
@@ -25,6 +25,25 @@ export class PostViewComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.displayPost();
     })
+  }
+
+
+  getCommentUser(){
+    let tempCommentUser!: User;
+
+    for (let i = 0; i < this.comments.length; i++) {
+
+      this.postService.getUserByComment(this.comments[i].id).subscribe(
+        data => {
+          tempCommentUser = data;
+          console.log(tempCommentUser.username)
+          this.commentUsers.push(tempCommentUser);
+        });
+
+        console.log(this.commentUsers[0])
+    }
+
+    console.log(this.commentUsers)
   }
 
   displayPost(){
@@ -46,12 +65,9 @@ export class PostViewComponent implements OnInit {
     this.postService.getCommentsByPost(postId).subscribe(
       data => {
         this.comments = data;
+        this.getCommentUser();
       }
     )
-
-    
-
-
       /*
     this.postService.getCommentByPost(postId).subscribe(
       data => {

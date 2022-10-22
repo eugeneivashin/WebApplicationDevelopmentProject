@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/classes/post';
+import { Tag } from 'src/app/classes/tag';
 import { PostService } from 'src/app/services/post.service';
-import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-post-list',
@@ -13,20 +13,19 @@ export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   searchMode: boolean = false;
+  tags: Tag[] = [];
+
   //currentPostId: number = 1;
 
   constructor(private postService: PostService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       //this.displayPosts2();
       this.displayPosts();
     })
-
-    let sub = this.route
-    .data
-    .subscribe(v => console.log(v + 'IM DATA'));
   }
 
   displayPosts(){
@@ -50,9 +49,8 @@ export class PostListComponent implements OnInit {
       }
     )
   }
-  
 
-  method1(): void{
+  method1(){
 
     const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
     let tempPosts: Post[]=[];
