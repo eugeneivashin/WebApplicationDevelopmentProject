@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { SearchComponent } from './components/search/search.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 
 const routes: Routes = [
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'posts', component: PostListComponent},
   {path: 'login', component: PostViewComponent},
+  {path: 'users/:id', component: ProfileComponent},
   {path: '', redirectTo: '/posts', pathMatch: 'full'},
   {path: '**', redirectTo: '/posts', pathMatch: 'full'},
 ];
@@ -24,7 +27,9 @@ const routes: Routes = [
     AppComponent,
     PostListComponent,
     PostViewComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent,
+    PostEditComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

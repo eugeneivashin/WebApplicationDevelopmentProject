@@ -1,0 +1,75 @@
+<article class="pt-2 mb-0">
+    <div class="container-fluid">
+        <div class="row py-2">
+            <div class="col"></div>
+            <div class="col-7 rounded-1 m-0 p-0 shadow p-0 mb-3 bg-body rounded">
+                <form method="POST" action="">
+                    <div class="row p-4">
+                        <p class="h2">Profile</p>
+                        <div
+                            class="col-3 border border-1 border-opacity-25 border-dark p-0 rounded rounded-2 shadow-sm">
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                                class="img-fluid">
+                        </div>
+                        <div class="col-9 align-self-center ">
+                            <div class="d-flex flex-column">
+                                <div class="form-group d-flex flex-row border-bottom ">
+                                    <label for="username" class="me-5 mb-2 text-nowrap"> Username</label>
+                                    <p id="username" class="ms-5 mb-1 w-100 text-end"> {{user.username}}</p>
+                                    <input name="username" style="display: none;"
+                                        class="form-control justify-content-end m-auto align-self-end"
+                                        type="text" id="usernameEdit" value="{{user.username}}">
+                                </div>
+                                <div class="form-group d-flex flex-row border-bottom">
+                                    <label for="email" class="me-5 mb-2 text-nowrap"> E-mail</label>
+                                    <p id="email" class="ms-5 mb-1 w-100 text-end"> {{user.email }}</p>
+                                    <input name="email" style="display: none;"
+                                        class="form-control justify-content-end m-auto me-0 align-self-end"
+                                        type="text" id="emailEdit" value="{{user.email }}">
+                                </div>
+                                <div class="form-group d-flex flex-row border-bottom m-0">
+                                    <label for="gender" class="me-5 mb-2 text-nowrap"> Gender</label>
+                                    <p id="gender" class="ms-5 my-0 w-100 text-end"> {{user.gender}}</p>
+                                    <div id="genderEdit" class="form-outline flex flex-column  my-0" style="display: none;">
+										<select name="gender" class="form-select">
+											<option selected>Choose</option>
+											<option value="1">Male</option>
+											<option value="2">Female</option>
+										</select>
+									</div>
+                                </div>
+                                <div class="d-flex flex-row border-bottom ">
+                                    <label class="me-5 mb-1 text-nowrap"> Rating</label>
+                                    <p class="ms-5 mb-1 w-100 text-end"> 5</p>
+                                </div>
+                                <div class="d-flex flex-row border-bottom ">
+                                    <label class="me-5 mb-1 text-nowrap"> Posts</label>
+                                    <p class="ms-5 mb-1 w-100 text-end"> 1</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 m-auto">
+                                <div class="d-flex flex-row">
+                                    <button id="editBtn" type="button"
+                                        class="btn btn-primary align-self-center m-auto"
+                                        onclick="editProfile()">Edit profile</button>
+                                    <button id="cancelBtn" type="button"
+                                        class="btn btn-primary align-self center m-auto"
+                                        style="display:none;" onclick="cancelEdit()">Cancel</button>
+                                    <button id="saveBtn" type="submit"
+                                        class="btn btn-primary align-self center m-auto"
+                                        style="display:none;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <p class="h2 border-top border-3 text-center">User posts</p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</article>
+<app-post-list></app-post-list>

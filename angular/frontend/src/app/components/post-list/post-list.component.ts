@@ -29,8 +29,7 @@ export class PostListComponent implements OnInit {
   }
 
   displayPosts(){
-
-
+    
     this.posts.splice(0);
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
