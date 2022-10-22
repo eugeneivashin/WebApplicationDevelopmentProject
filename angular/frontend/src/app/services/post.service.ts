@@ -54,8 +54,28 @@ export class PostService {
 
     const seacrhUrl = `${this.endUrl}/search/findByTitleContaining?title=${searchKeyword}`;
 
-    console.log(seacrhUrl);
+    console.log(seacrhUrl + searchKeyword);
     return this.httpClient.get<GetResponse>(`${seacrhUrl}`).pipe(
+      map(response => response._embedded.posts)
+    );
+  }
+
+  searchPostsByTags(searchKeyword: string):  Observable<Post[]>{
+
+    const seacrhUrlTag = `${this.endUrl}/search/findTagListPost?title=${searchKeyword}`;
+
+    console.log(seacrhUrlTag);
+    return this.httpClient.get<GetResponse>(`${seacrhUrlTag}`).pipe(
+      map(response => response._embedded.posts)
+    );
+  }
+
+  searchPostsByTagsAndTitles(searchKeyword: string):  Observable<Post[]>{
+
+    const seacrhUrlTag = `${this.endUrl}/search/findTagListPost?title=${searchKeyword}`;
+
+    console.log(seacrhUrlTag);
+    return this.httpClient.get<GetResponse>(`${seacrhUrlTag}`).pipe(
       map(response => response._embedded.posts)
     );
   }
