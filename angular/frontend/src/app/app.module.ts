@@ -14,6 +14,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 
 const routes: Routes = [
   {path: 'search/:keyword', component: PostListComponent},
+  {path: 'posts/edit/:id', component: PostEditComponent},
   {path: 'posts/:id', component: PostViewComponent},
   {path: 'posts', component: PostListComponent},
   {path: 'login', component: PostViewComponent},
