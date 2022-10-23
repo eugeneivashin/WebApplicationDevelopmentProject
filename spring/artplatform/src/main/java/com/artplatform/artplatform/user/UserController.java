@@ -28,10 +28,7 @@ public class UserController {
         return 2;
     }
 
-    @RequestMapping(value = "/users?email=<<email>>", method = RequestMethod.GET)
-    public Optional<User> getByEmail(@RequestParam("email") String email) {
-        return this.userService.getByEmail(email);
-    }
+
     /*
     @PostMapping
     public void registerUser(@RequestBody User user){
