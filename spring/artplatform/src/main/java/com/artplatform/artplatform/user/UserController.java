@@ -19,10 +19,14 @@ public class UserController {
 
 
     @GetMapping
-    public List<User> getStudents() {
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
+    @RequestMapping(value = "/login2", method = RequestMethod.GET)
+    public Integer login2() {
+        return 2;
+    }
 
     @RequestMapping(value = "/users?email=<<email>>", method = RequestMethod.GET)
     public Optional<User> getByEmail(@RequestParam("email") String email) {
@@ -36,7 +40,7 @@ public class UserController {
     */
 
     @PostMapping
-    public void registerUser(@RequestBody User user){
+        public void registerUser(@RequestBody User user){
         userService.addNewUser(user);
     }
 

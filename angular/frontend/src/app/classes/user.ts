@@ -1,11 +1,12 @@
 export class User {
 
-    id: number;
-     username: string;
-      email: string;
-     gender: string;
-    password: string;
+    id!: number;
+     username!: string;
+      email!: string;
+     gender!: string;
+    password!: string;
 
+    /*
     constructor(
         id: number,
         username: string,
@@ -18,5 +19,6 @@ export class User {
             this.gender = gender;
             this.password = password;
         }
+        */
 
 }
