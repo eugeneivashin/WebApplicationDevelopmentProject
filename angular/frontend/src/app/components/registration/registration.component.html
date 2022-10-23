@@ -1,17 +1,93 @@
-<form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm.value)">
+<div class="container text-center">
+    <div class="row py-2">
+        <div class="col"></div>
+        <div class="col">
+            <!-- Pills navs -->
+            <div class="container bg-body rounded-2">
+                <!-- Pills navs -->
 
-    <input type="text" name="email" id="email" required #email="ngModel" email placeholder="Enter Email" [(ngModel)] = "user.email">
-    <br><span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span><br>
+                <!--TODO: Select registration button by default-->
+                <ul class="nav nav-pills nav-justified mb-3 mt-5 pt-4" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="tab-register" data-bs-toggle="pill" href="#pills-register"
+                            role="tab" aria-controls="pills-register" aria-selected="true">Registration</a>
+                    </li>
+                </ul>
+                <!-- Pills content -->
+                <div>
+                    <div id="pills-login" role="tabpanel"
+                        aria-labelledby="tab-login">
+                        
+                    </div>
+                    <div id="pills-register" role="tabpanel"
+                        aria-labelledby="tab-register">
+                        
+                        <form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm.value)" class="needs-validation">
 
-    <input type="password" name="password" id="password" #password="ngModel" minlength="3" pattern="[a-zA-Z]+$" required  placeholder="Enter Pass" [(ngModel)] = "user.password">
-    <br><span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span><br>
- 
-    <input type="text" name="username" id="username" #username="ngModel" required minlength="3" pattern="[a-zA-Z1-9]+$"  placeholder="Enter Username" [(ngModel)] = "user.username">
-    <br><span *ngIf="username.invalid && username.touched" style="color:red">Please enter valid input</span><br>
+                            <!-- Name input -->
 
-    <input type="text" name="gender" id="gender" #gender="ngModel" required minlength="3" pattern="[a-zA-Z]+$" placeholder="Enter Gender" [(ngModel)] = "user.gender">
-    <br><span *ngIf="gender.invalid && gender.touched" style="color:red">Please enter valid input</span><br>
+                            <!--
+                            <div class="form-outline mb-4">
+                                <input type="text" id="registerName" class="form-control" />
+                                <label class="form-label" for="registerName">Name</label>
+                            </div>
+
+                            -->
+
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                                 <input class="form-control" type="text" name="username" id="username" #username="ngModel" required minlength="3" pattern="[a-zA-Z1-9]+$"  placeholder="Username" [(ngModel)] = "user.username">
+    <span *ngIf="username.invalid && username.touched" style="color:red">Please enter valid input</span>
+                                <div class="valid-feedback">
+                                    Username is not available
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input class="form-control" type="text" name="email" id="email" required #email="ngModel" email placeholder="Email" [(ngModel)] = "user.email">
+    <span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span>
+                            </div>
+
+                            <!--Gender selection-->
+                            <div class="form-outline my-4 flex flex-column">
+                                <input class="form-control" type="text" name="gender" id="gender" #gender="ngModel" required minlength="3" pattern="[a-zA-Z]+$" placeholder="Gender" [(ngModel)] = "user.gender">
+    <span *ngIf="gender.invalid && gender.touched" style="color:red">Please enter valid input</span>
+
+                                <!-- TODO: Gender selection menu instead of text field
+                                <select name="gender" class="form-select">
+                                    <option selected>Choose</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                                <label class="form-label" for="gender">Gender</label>
+                                 -->
+                            </div>
+                            
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input class="form-control" type="password" name="password" id="password" #password="ngModel" minlength="3" pattern="[a-zA-Z]+$" required  placeholder="Password" [(ngModel)] = "user.password">
+    <span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span>
+                            </div>
 
 
-    <button [disabled]="registrationForm.invalid">Login</button>
-</form>
+                            <!-- Repeat Password input -->
+
+                            <!--TODO: Password repeated check
+                            <div class="form-outline mb-4">
+                                <input type="password" id="registerRepeatPassword" class="form-control" />
+                                <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                            </div>
+                            -->
+
+                            <!-- Submit button -->
+                            <button [disabled]="registrationForm.invalid" class="btn btn-primary btn-block mb-3">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                <!-- Pills content -->
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
