@@ -19,10 +19,11 @@ public class MainController {
     }
 
 
-    @GetMapping(path="/login")
+    @GetMapping(path="/users/login")
     @CrossOrigin("http://localhost:4200")
-    public Optional<User> loginUser(String email, String password) {
-        return userService.loginUser(email, password);
+    public Optional<User> loginSection(String email, String password) {
+        System.out.println("IM HERE");
+        return userService.getIdByEmail(email, password);
     }
 
 }
