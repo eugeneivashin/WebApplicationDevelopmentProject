@@ -22,12 +22,11 @@
         </div>
         <div class="col-3 ">
                 <div class="d-flex flex-row justify-content-end gap-2 align-items-center">
-                    <button class="btn btn-primary me-md-2text-nowrap" style="display:none;" type="button"><p class="m-auto">Sign In</p></button>
-                    <button class="btn btn-primary text-nowrap" style="display:none;" type="button"><p class="m-auto">Sign Up</p></button>
+                    <button *ngIf="!isUserLoggedIn">Login</button> 
+                    <button *ngIf="isUserLoggedIn">Sign Out</button>
                     <p id="signedText" class="text-nowrap my-0">Signed in as 
-                        <a id="profileLink" style="text-decoration: none;" class="my-0" href="">El hombre</a>
+                        <a id="profileLink" style="text-decoration: none;" class="my-0" href=""> {{ currentUser.username }} </a>
                     </p>
-                    <button class="btn btn-primary text-nowrap" type="button"><p class="m-auto">Logout</p></button>
                 </div>
         </div>
     </div>

@@ -2,7 +2,6 @@ package com.artplatform.artplatform.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -20,5 +19,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT u from User u Where u.email = ?1 and u.password= ?2")
     Optional<User> find(String email, String password);
+
+    @Query("SELECT u.id from User u Where u.email = ?1")
+    Optional<Integer> findUserIdByEmail(String email);
+
+    Optional<User> findUserById(Integer id);
+
 
 }

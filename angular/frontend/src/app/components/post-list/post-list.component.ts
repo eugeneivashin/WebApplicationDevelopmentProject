@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/classes/post';
 import { Tag } from 'src/app/classes/tag';
+import { User } from 'src/app/classes/user';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -14,12 +16,20 @@ export class PostListComponent implements OnInit {
   posts: Post[] = [];
   searchMode: boolean = false;
   tags: Tag[] = [];
+  tagPostMap = new Map<Tag[], Post>();
+
+  currentUser: User = new User();
 
   //currentPostId: number = 1;
 
   constructor(private postService: PostService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) {
+                this.userService.currentUser.subscribe(value => {
+                  this.currentUser = value;
+              });
+               }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -29,7 +39,7 @@ export class PostListComponent implements OnInit {
   }
 
   displayPosts(){
-    
+
     this.posts.splice(0);
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
@@ -45,6 +55,7 @@ export class PostListComponent implements OnInit {
     this.postService.getAllPosts().subscribe(
       data => {
         this.posts = data;
+
       }
     )
   }
