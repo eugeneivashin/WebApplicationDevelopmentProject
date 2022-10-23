@@ -33,7 +33,6 @@ public class UserService {
     }
 
     public Optional<User> loginUser(String email, String password){
-        System.out.println(email + password);
         return userRepository.userLogin(email, password);
     }
 

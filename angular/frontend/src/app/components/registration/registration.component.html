@@ -1,0 +1,17 @@
+<form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm.value)">
+
+    <input type="text" name="email" id="email" required #email="ngModel" email placeholder="Enter Email" [(ngModel)] = "user.email">
+    <br><span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span><br>
+
+    <input type="password" name="password" id="password" #password="ngModel" minlength="3" pattern="[a-zA-Z]+$" required  placeholder="Enter Pass" [(ngModel)] = "user.password">
+    <br><span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span><br>
+ 
+    <input type="text" name="username" id="username" #username="ngModel" required minlength="3" pattern="[a-zA-Z1-9]+$"  placeholder="Enter Username" [(ngModel)] = "user.username">
+    <br><span *ngIf="username.invalid && username.touched" style="color:red">Please enter valid input</span><br>
+
+    <input type="text" name="gender" id="gender" #gender="ngModel" required minlength="3" pattern="[a-zA-Z]+$" placeholder="Enter Gender" [(ngModel)] = "user.gender">
+    <br><span *ngIf="gender.invalid && gender.touched" style="color:red">Please enter valid input</span><br>
+
+
+    <button [disabled]="registrationForm.invalid">Login</button>
+</form>
