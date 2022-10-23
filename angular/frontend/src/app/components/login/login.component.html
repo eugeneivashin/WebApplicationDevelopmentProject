@@ -1,11 +1,36 @@
-<form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+<div class="container text-center">
+    <div class="row py-2">
+        <div class="col"></div>
+        <div class="col">
+            <!-- Pills navs -->
+            <div class="container bg-body rounded-2">
+                <!-- Pills navs -->
+                <ul class="nav nav-pills nav-justified mb-3 mt-5 pt-4" id="ex1" role="tablist">
+                </ul>
 
-    <input type="text" name="email" required #email="ngModel" email placeholder="Enter Email" ngModel>
-    <br><span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span><br>
-
-    <input type="password" name="password" minlength="3" pattern="[a-zA-Z]+$" required #password="ngModel" placeholder="Enter Pass" ngModel>
-    <br><span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span><br>
-
-    <button [disabled]="loginForm.invalid">Login</button>
-</form>
-
+                <!-- Pills content -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+                        aria-labelledby="tab-login">
+                        <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)" class="needs-valitation">
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input class = "form-control" type="text" name="email" required #email="ngModel" email placeholder="Email / Username" ngModel>
+                                <span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span>
+                            </div>
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input class="form-control" type="password" name="password" minlength="3" pattern="[a-zA-Z]+$" required #password="ngModel" placeholder="Password" ngModel>
+                                <span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span>
+                            </div>
+                            <!-- Submit button -->
+                           
+                            <button [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-3">Login</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
