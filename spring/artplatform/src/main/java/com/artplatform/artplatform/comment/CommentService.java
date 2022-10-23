@@ -17,4 +17,9 @@ public class CommentService {
     public List<Comment> getComments() {
         return commentRepository.findAll();
     }
+
+    public void addNewComment(Comment comment){
+        commentRepository.save(comment);
+    }
 }
+
