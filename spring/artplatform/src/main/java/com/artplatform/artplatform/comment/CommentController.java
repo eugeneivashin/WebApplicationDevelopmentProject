@@ -3,9 +3,7 @@ package com.artplatform.artplatform.comment;
 import com.artplatform.artplatform.post.Post;
 import com.artplatform.artplatform.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,10 @@ public class CommentController {
     @GetMapping
     public List<Comment> getComments(){
         return commentService.getComments();
+    }
+
+    @PostMapping
+    public void sendComment(@RequestBody Comment comment){
+        commentService.addNewComment(comment);
     }
 }

@@ -4,9 +4,14 @@ import { Post } from 'src/app/classes/post';
 import { User } from 'src/app/classes/user';
 import { Comment } from 'src/app/classes/comment';
 import { PostService } from 'src/app/services/post.service';
+
 import { TagDefinition } from '@angular/compiler';
 import { TagList } from 'src/app/classes/tag-list';
 import { Tag } from 'src/app/classes/tag';
+
+
+import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -22,13 +27,29 @@ export class PostViewComponent implements OnInit {
   commentUsers: User[] = [];
   tags: Tag[] = [];
 
+  newComment : Comment = new Comment();
+
   constructor(private postService: PostService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,) { }
+
+    commentForm = this.formBuilder.group({
+      comment_text: '',
+    })
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.displayPost();
     })
+  }
+
+  sendComment(item: any){
+    this.postService.sendComment(this.newComment).subscribe(
+      data => {
+        this.postService.currentComment.next(data);
+      }
+    );
   }
 
 

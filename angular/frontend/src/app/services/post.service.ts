@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Post } from '../classes/post';
 import { User } from '../classes/user';
 import { Comment } from '../classes/comment';
@@ -12,11 +12,17 @@ import { Tag } from '../classes/tag';
 })
 export class PostService {
 
+  private endUrlComment = 'http://localhost:8080/comments';
 
   private endUrl = 'http://localhost:8080/posts';
 
+  public currentComment: BehaviorSubject<Comment> = new BehaviorSubject<Comment>(new Comment());
+
+  
   constructor(private httpClient: HttpClient) { }
 
+
+  
   getAllPosts2(thePostId: number): Observable<Post[]>{
 
 
@@ -97,6 +103,11 @@ export class PostService {
 
     const tempEndUrlTag = 'http://localhost:8080/tag_Lists';
     return this.httpClient.get<Tag>(`${tempEndUrlTag}/${tag_list.id}/tag`);
+  }
+
+
+  sendComment(comment: Comment): Observable<Comment>{
+    return this.httpClient.post<Comment>(`${this.endUrlComment}`, this.currentComment);
   }
 
 
