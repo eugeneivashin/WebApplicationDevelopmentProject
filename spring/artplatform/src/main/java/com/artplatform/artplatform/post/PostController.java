@@ -1,15 +1,16 @@
 package com.artplatform.artplatform.post;
 
+import com.artplatform.artplatform.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path="/post")
+@CrossOrigin("http://localhost:4200")
 public class PostController {
 
     private final PostService postService;
@@ -18,8 +19,19 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping
+    @PostMapping(path="/post")
     public List<Post> getPosts(){
         return postService.getPosts();
+    }
+
+    @GetMapping(path="posts/getdata/{id}")
+    public ResponseEntity<Post> getById(@PathVariable Integer id) {
+        Optional<Post> post = postService.getPost(id);
+        if (post.isPresent()) {
+            return new ResponseEntity<>(post.get(), HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(post.get(), HttpStatus.BAD_REQUEST);
+        }
     }
 }

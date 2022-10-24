@@ -4,6 +4,8 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Post } from '../classes/post';
 import { User } from '../classes/user';
 import { Comment } from '../classes/comment';
+import { TagList } from '../classes/tag-list';
+import { Tag } from '../classes/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +43,7 @@ export class PostService {
 
 
   getSinglePost(thePostId: number): Observable<Post>{
-    return this.httpClient.get<Post>(`${this.endUrl}/${thePostId}`);
+    return this.httpClient.get<Post>(`${this.endUrl}/getdata/${thePostId}`);
   }
 
 
@@ -97,9 +99,17 @@ export class PostService {
     return this.httpClient.get<User>(`${tempEndUrl}/${commentId}/user`);
   }
 
+  getPostTags(tag_list: TagList): Observable<Tag>{
+
+    const tempEndUrlTag = 'http://localhost:8080/tag_Lists';
+    return this.httpClient.get<Tag>(`${tempEndUrlTag}/${tag_list.id}/tag`);
+  }
+
+
   sendComment(comment: Comment): Observable<Comment>{
     return this.httpClient.post<Comment>(`${this.endUrlComment}`, this.currentComment);
   }
+
 
 /*
   upvote(thePostId: number){

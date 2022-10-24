@@ -1,13 +1,15 @@
 package com.artplatform.artplatform.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="/user")
+@CrossOrigin("http://localhost:4200")
 public class UserController {
 
     private final UserService userService;
@@ -17,17 +19,27 @@ public class UserController {
         this.userService = UserService;
     }
 
-
-    @GetMapping
+    @GetMapping(path="/user")
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
-    @RequestMapping(value = "/login2", method = RequestMethod.GET)
-    public Integer login2() {
-        return 2;
+    @GetMapping(path="users/asd/{id}")
+    public ResponseEntity<User> getById(@PathVariable Integer id) {
+        Optional<User> user = userService.getUser(id);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(user.get(), HttpStatus.BAD_REQUEST);
+        }
     }
 
+
+    @PostMapping(path="/user")
+    public void registerUser(@RequestBody User user){
+        userService.addNewUser(user);
+    }
 
     /*
     @PostMapping
@@ -36,9 +48,5 @@ public class UserController {
     }
     */
 
-    @PostMapping
-        public void registerUser(@RequestBody User user){
-        userService.addNewUser(user);
-    }
 
 }

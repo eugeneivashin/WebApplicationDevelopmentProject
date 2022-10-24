@@ -1,11 +1,8 @@
 package com.artplatform.artplatform.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +23,11 @@ public class UserService {
     }
 
 
+    public Optional<User> getUser(Integer id) {
+        return userRepository.findUserById(id);
+    }
+
+
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository.findUserByEmail(user.getEmail());
         if (userOptional.isPresent())
@@ -41,6 +43,8 @@ public class UserService {
     }
 
      */
+
+
 
     public Optional<User> getIdByEmail(String email, String password){
         Optional<Integer> userId = userRepository.findUserIdByEmail(email);

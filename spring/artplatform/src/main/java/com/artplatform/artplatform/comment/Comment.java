@@ -2,6 +2,7 @@ package com.artplatform.artplatform.comment;
 
 import com.artplatform.artplatform.post.Post;
 import com.artplatform.artplatform.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -31,11 +32,12 @@ public class Comment {
     @CreationTimestamp
     private LocalDateTime comment_date;
 
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="post_id", nullable = false)
     private Post post;

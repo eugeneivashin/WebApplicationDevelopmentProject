@@ -4,6 +4,7 @@ import com.artplatform.artplatform.comment.Comment;
 import com.artplatform.artplatform.post.Post;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
@@ -31,11 +32,9 @@ public class User {
 
     private String password;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Post> posts;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Comment> comments;
 

@@ -4,8 +4,15 @@ import { Post } from 'src/app/classes/post';
 import { User } from 'src/app/classes/user';
 import { Comment } from 'src/app/classes/comment';
 import { PostService } from 'src/app/services/post.service';
+
+import { TagDefinition } from '@angular/compiler';
+import { TagList } from 'src/app/classes/tag-list';
+import { Tag } from 'src/app/classes/tag';
+
+
 import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-post-view',
@@ -18,6 +25,7 @@ export class PostViewComponent implements OnInit {
   user!: User;
   comments: Comment[] = [];
   commentUsers: User[] = [];
+  tags: Tag[] = [];
 
   newComment : Comment = new Comment();
 
@@ -63,13 +71,30 @@ export class PostViewComponent implements OnInit {
     console.log(this.commentUsers)
   }
 
+  getTags(tag_list: TagList[]){
+
+      let tempTags: Tag[]=[];
+  
+      for (let i = 0; i < tag_list.length; i++) {
+          this.postService.getPostTags(tag_list[i]).subscribe(
+            data => {
+              tempTags.push(data);
+            }
+          )
+        this.tags = tempTags;
+      }
+    
+  }
+
   displayPost(){
 
     const postId: number = +this.route.snapshot.paramMap.get("id")!;
 
+
     this.postService.getSinglePost(postId).subscribe(
       data => {
         this.post = data;
+        this.getTags(this.post.tag_lists);
       }
     )
 

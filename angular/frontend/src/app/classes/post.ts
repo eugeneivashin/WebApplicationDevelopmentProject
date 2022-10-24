@@ -1,4 +1,20 @@
+import { TagList } from "./tag-list";
+import { User } from "./user";
+
 export class Post {
+
+    id!: number;
+    title!: string;
+    post_description!: string;
+    post_image!: string;
+    post_upvote!: number;
+    post_downvote!: number;
+    post_date!: Date;
+
+    comments!: Comment [];
+    tag_lists!:TagList [];
+
+    /*
     constructor(
         public id: number,
         public title: string,
@@ -8,4 +24,6 @@ export class Post {
         public post_downvote: number,
         public post_date: Date
         ) {}
+
+        */
 }

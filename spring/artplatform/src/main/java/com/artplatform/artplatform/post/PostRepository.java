@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin("http://localhost:4200")
 @Repository
@@ -31,6 +33,8 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("select p from Tag_List tl inner join tl.post p" +
             " inner join tl.tag t on t.title=?1")
     Page<Post> findTagListPost(@Param("title") String title, Pageable pageable);
+
+    Optional<Post> getPostById(@Param("id") Integer id);
 
     /*
     @Query("select p from Tag_List tl inner join tl.post p" +

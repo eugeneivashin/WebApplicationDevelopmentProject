@@ -10,15 +10,15 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private endUrlLogin = 'http://localhost:8080/login';
+  private endUrlLogin = 'http://localhost:8080/users/login';
   private endUrlRegister = 'http://localhost:8080/users';
 
-  loginUser(email: string, password: string): Observable<User>{
-    console.log(email, password)
-    return this.httpClient.get<User>(`${this.endUrlLogin}`);
+  loginUser(user: User): Observable<User>{
+    return this.httpClient.get<User>(`${this.endUrlLogin}?email=${user.email}&password=${user.password}`);
   }
 
-  registerUser(user: User): Observable<User>{
+
+  registerUser(user: User){
     return this.httpClient.post<User>(`${this.endUrlRegister}`, user);
   }
 
