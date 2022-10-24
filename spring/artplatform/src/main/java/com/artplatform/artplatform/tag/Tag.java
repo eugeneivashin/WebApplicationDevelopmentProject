@@ -1,6 +1,7 @@
 package com.artplatform.artplatform.tag;
 
 import com.artplatform.artplatform.tag_list.Tag_List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ public class Tag {
 
     private String title;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tag")
     private Set<Tag_List> tagLists;
 

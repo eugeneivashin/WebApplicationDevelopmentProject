@@ -1,3 +1,5 @@
+import { Post } from "./post";
+
 export class User {
 
     id!: number;
@@ -5,7 +7,8 @@ export class User {
       email!: string;
      gender!: string;
     password!: string;
-
+    posts!: Post[];
+    comments!: Comment[];
     /*
     constructor(
         id: number,
