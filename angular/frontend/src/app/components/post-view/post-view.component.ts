@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/classes/post';
 import { User } from 'src/app/classes/user';
 import { Comment } from 'src/app/classes/comment';
@@ -31,7 +31,8 @@ export class PostViewComponent implements OnInit {
 
   constructor(private postService: PostService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,) { }
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
     commentForm = this.formBuilder.group({
       comment_text: '',
@@ -61,14 +62,11 @@ export class PostViewComponent implements OnInit {
       this.postService.getUserByComment(this.comments[i].id).subscribe(
         data => {
           tempCommentUser = data;
-          console.log(tempCommentUser.username)
           this.commentUsers.push(tempCommentUser);
         });
 
-        console.log(this.commentUsers[0])
     }
 
-    console.log(this.commentUsers)
   }
 
   getTags(tag_list: TagList[]){
@@ -86,6 +84,13 @@ export class PostViewComponent implements OnInit {
     
   }
 
+
+  searchForPosts(tag: Tag) {
+    this.router.navigateByUrl(`/search/${tag.title}`);
+  }
+
+
+
   displayPost(){
 
     const postId: number = +this.route.snapshot.paramMap.get("id")!;
@@ -94,6 +99,7 @@ export class PostViewComponent implements OnInit {
     this.postService.getSinglePost(postId).subscribe(
       data => {
         this.post = data;
+        console.log(this.post)
         this.getTags(this.post.tag_lists);
       }
     )

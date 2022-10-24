@@ -41,6 +41,10 @@ export class PostService {
     );
   }
 
+  getAllPostsTest(): Observable<Post[]>{
+    return this.httpClient.get<Post[]>(`http://localhost:8080/posts/getall`);
+  }
+
 
   getSinglePost(thePostId: number): Observable<Post>{
     return this.httpClient.get<Post>(`${this.endUrl}/getdata/${thePostId}`);
@@ -66,27 +70,21 @@ export class PostService {
 
     const seacrhUrl = `${this.endUrl}/search/findByTitleContaining?title=${searchKeyword}`;
 
-    console.log(seacrhUrl + searchKeyword);
+
     return this.httpClient.get<GetResponse>(`${seacrhUrl}`).pipe(
       map(response => response._embedded.posts)
     );
   }
 
   searchPostsByTags(searchKeyword: string):  Observable<Post[]>{
-
-    const seacrhUrlTag = `${this.endUrl}/search/findTagListPost?title=${searchKeyword}`;
-
-    console.log(seacrhUrlTag);
-    return this.httpClient.get<GetResponse>(`${seacrhUrlTag}`).pipe(
-      map(response => response._embedded.posts)
-    );
+    return this.httpClient.get<Post[]>(`${this.endUrl}/tag/${searchKeyword}`);
   }
 
   searchPostsByTagsAndTitles(searchKeyword: string):  Observable<Post[]>{
 
     const seacrhUrlTag = `${this.endUrl}/search/findTagListPost?title=${searchKeyword}`;
 
-    console.log(seacrhUrlTag);
+
     return this.httpClient.get<GetResponse>(`${seacrhUrlTag}`).pipe(
       map(response => response._embedded.posts)
     );
@@ -104,6 +102,7 @@ export class PostService {
     const tempEndUrlTag = 'http://localhost:8080/tag_Lists';
     return this.httpClient.get<Tag>(`${tempEndUrlTag}/${tag_list.id}/tag`);
   }
+
 
 
   sendComment(comment: Comment): Observable<Comment>{
