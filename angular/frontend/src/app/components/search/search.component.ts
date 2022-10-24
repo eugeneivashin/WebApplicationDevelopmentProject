@@ -34,7 +34,6 @@ export class SearchComponent implements OnInit {
 
 
   searchForPosts(textInput: string) {
-    console.log(`text is = ${textInput}`);
     this.router.navigateByUrl(`/search/${textInput}`);
   }
 }

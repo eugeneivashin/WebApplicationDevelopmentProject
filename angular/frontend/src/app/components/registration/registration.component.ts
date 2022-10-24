@@ -24,7 +24,6 @@ export class RegistrationComponent implements OnInit {
     this.loginService.registerUser(this.user).subscribe(
       data => {
         this.user = data;
-        console.log(this.user)
         this.userService.currentUser.next(this.user);
         this.userService.isUserLoggedIn.next(true);
         this.router.navigateByUrl(`/`);

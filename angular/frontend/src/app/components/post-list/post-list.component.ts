@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/classes/post';
 import { Tag } from 'src/app/classes/tag';
+import { TagList } from 'src/app/classes/tag-list';
 import { User } from 'src/app/classes/user';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,7 +16,7 @@ export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   searchMode: boolean = false;
-  tags: Tag[] = [];
+  tags: Tag[][] = [];
   tagPostMap = new Map<Tag[], Post>();
 
   currentUser: User = new User();
@@ -52,10 +53,10 @@ export class PostListComponent implements OnInit {
   }
 
   getAllPosts(){
-    this.postService.getAllPosts().subscribe(
+    this.postService.getAllPostsTest().subscribe(
       data => {
         this.posts = data;
-
+        this.getTags();
       }
     )
   }
@@ -64,53 +65,39 @@ export class PostListComponent implements OnInit {
 
     const searchKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
     let tempPosts: Post[]=[];
-
-    var splitted = searchKeyword.split(" ", 10);
-
-    for (let i = 0; i < splitted.length; i++) {
-        console.log(splitted[i])
-        this.postService.searchPostsByTags(splitted[i]).subscribe(
+        this.postService.searchPostsByTags(searchKeyword).subscribe(
           data => {
-            for (let i = 0; i < data.length; i++)
-            {
-              tempPosts.push(data[i]);
-            }
+            this.posts = data;
+            this.getTags();
           }
         )
-      this.posts = tempPosts;
-    }
   }
 
+
+  searchForPosts(tag: Tag) {
+    this.router.navigateByUrl(`/search/${tag.title}`);
+  }
+
+
+  getTags(){
+    for (let i = 0; i < this.posts.length; i++) {
+      let tempTags: Tag[]=[];
+      for (let u = 0; u < this.posts[i].tag_lists.length; u++) {
+          this.postService.getPostTags(this.posts[i].tag_lists[u]).subscribe(
+            data => {
+              tempTags.push(data)
+            }
+          )
+      }
+      this.tags.push(tempTags)
+  }
+}
 
 /*
   upvote(post: Post){
     this.postService.upvote();
   }
   */
-
-  /*        test
-
-
-  displayPosts2(){
-
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has("id");
-
-    if (hasCategoryId){
-      this.currentPostId = +this.route.snapshot.paramMap.get("id")!;
-      // + to convert int to string, ! to tell, that value is not null
-    }
-    else{
-      this.currentPostId = 1;
-    }
-
-    this.postService.getAllPosts2(this.currentPostId).subscribe(
-      data => {
-        this.posts = data;
-      }
-    )
-  }
-  */
-
 
 
 }

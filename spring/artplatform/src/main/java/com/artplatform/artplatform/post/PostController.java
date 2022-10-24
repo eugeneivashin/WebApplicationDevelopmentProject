@@ -24,6 +24,17 @@ public class PostController {
         return postService.getPosts();
     }
 
+
+    @GetMapping(path="posts/getall")
+    public ResponseEntity<Post[]> getAllPostsNew(){
+        return postService.getPosts2();
+    }
+
+    @GetMapping(path="posts/tag/{title}")
+    public ResponseEntity<Post[]> getPostByTag(@PathVariable String title){
+        return postService.findTagListPost2(title);
+    }
+
     @GetMapping(path="posts/getdata/{id}")
     public ResponseEntity<Post> getById(@PathVariable Integer id) {
         Optional<Post> post = postService.getPost(id);

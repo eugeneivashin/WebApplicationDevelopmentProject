@@ -65,10 +65,7 @@
                         <div class="container">
                         <div class="row">
                             <div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto border-bottom border-5 border-dark pb-2 col" *ngFor="let tag of tags">
-                                <a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1 col" href="#"
-                                    role="button">
-                                     #{{ tag.title }}
-                                </a>    
+                                <button class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1 col" (click)="searchForPosts(tag)" value="{{ tag.title }}">#{{ tag.title }}</button>
                             </div>
                         </div>
                         </div>

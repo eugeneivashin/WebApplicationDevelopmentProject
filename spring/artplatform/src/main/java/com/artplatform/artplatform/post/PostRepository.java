@@ -46,4 +46,10 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
      */
 
+    @Query("SELECT p FROM Post p")
+    Post[] findAllPosts2();
+    @Query("select p from Tag_List tl inner join tl.post p" +
+            " inner join tl.tag t on t.title=?1")
+    Post[] findTagListPost2(@Param("title") String title);
+
 }

@@ -24,7 +24,7 @@
 				</div>
 				<div class="col"></div>
 			</div>
-			<article class="" *ngFor="let singlePost of posts">
+			<article class="" *ngFor="let singlePost of posts; index as i">
 				<div class="container-fluid">
 					<div class="row py-1">
 						<div class="col"></div>
@@ -80,16 +80,10 @@
 										</div>
 									</div>
 									<!-- TAGS -->
-									<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto">
-											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
-												role="button"><p class="m-auto">#coloss</p>
-											</a>
-											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
-												role="button"><p class="m-auto">#digital</p>
-											</a>
-											<a class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1" href="#"
-												role="button"><p class="m-auto">#videogame</p>
-											</a>
+									<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto" *ngFor="let tag of tags[i]">
+
+											<button class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1 col" (click)="searchForPosts(tag)" value="{{ tag.title }}">#{{ tag.title }}</button>
+	
 									</div>
 									<div>{{ currentUser.username }}</div>
 								</div>

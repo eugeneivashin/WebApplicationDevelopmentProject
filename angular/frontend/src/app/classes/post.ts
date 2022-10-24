@@ -1,3 +1,4 @@
+import { Tag } from "./tag";
 import { TagList } from "./tag-list";
 import { User } from "./user";
 
@@ -11,8 +12,9 @@ export class Post {
     post_downvote!: number;
     post_date!: Date;
 
-    comments!: Comment [];
-    tag_lists!:TagList [];
+    comments: Comment [] = [];
+    tag_lists: TagList [] =[];
+    tags: Tag [] = [];
 
     /*
     constructor(
@@ -26,4 +28,5 @@ export class Post {
         ) {}
 
         */
+       
 }
