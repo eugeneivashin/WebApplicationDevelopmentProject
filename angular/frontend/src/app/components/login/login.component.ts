@@ -25,12 +25,13 @@ export class LoginComponent implements OnInit {
     
 
   loginUser(item: any){
-
+    console.log(this.user);
     this.loginService.loginUser(this.user).subscribe(
-      data => {
+      data => { 
+        
         if (data === null)
         {
-          this.router.navigateByUrl(`/posts`);
+          this.router.navigateByUrl(`/login`);
         }
         else{
           this.user = data;

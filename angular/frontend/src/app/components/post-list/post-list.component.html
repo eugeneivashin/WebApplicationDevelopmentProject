@@ -80,10 +80,13 @@
 										</div>
 									</div>
 									<!-- TAGS -->
-									<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto" *ngFor="let tag of tags[i]">
-
-											<button class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1 col" (click)="searchForPosts(tag)" value="{{ tag.title }}">#{{ tag.title }}</button>
-	
+									<div class="container">
+										<div class="row">
+											<div class="d-flex flex-row flex-wrap m-1 h-auto p-0 w-auto col" *ngFor="let tag of tags[i]">
+												<button class="btn btn-secondary text-nowrap me-1 flex-shrink-1 m-0 p-1 col" (click)="searchForPosts(tag)"
+													value="{{ tag.title }}">#{{ tag.title }}</button>
+											</div>
+										</div>
 									</div>
 									<div>{{ currentUser.username }}</div>
 								</div>
