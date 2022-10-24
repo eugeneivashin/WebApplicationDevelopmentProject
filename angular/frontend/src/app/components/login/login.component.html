@@ -4,24 +4,23 @@
         <div class="col"></div>
         <div class="col">
             <!-- Pills navs -->
-            <div class="container bg-body rounded-2">
-                <!-- Pills navs -->
-                <ul class="nav nav-pills nav-justified mb-3 mt-5 pt-4" id="ex1" role="tablist">
-                </ul>
+            <div class="container bg-body rounded-2 pt-3">
 
                 <!-- Pills content -->
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
                         aria-labelledby="tab-login">
+                        <p data-bs-toggle="pill" href="#pills-register"
+                            role="tab" aria-controls="pills-register" aria-selected="true">Login</p>
                         <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)" class="needs-valitation">
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input class = "form-control" type="text" name="email" required #email="ngModel" email placeholder="Email / Username" ngModel>
+                                <input class = "form-control" type="text" name="email" required #email="ngModel" email placeholder="Email / Username" [(ngModel)]="user.email">
                                 <span *ngIf="email.invalid && email.touched" style="color:red">Please enter valid input</span>
                             </div>
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input class="form-control" type="password" name="password" minlength="3" pattern="[a-zA-Z]+$" required #password="ngModel" placeholder="Password" ngModel>
+                                <input class="form-control" type="password" name="password" minlength="3" pattern="[a-zA-Z]+$" required #password="ngModel" placeholder="Password" [(ngModel)]="user.password">
                                 <span *ngIf="password.invalid && password.touched" style="color:red">Please enter valid input</span>
                             </div>
                             <!-- Submit button -->
